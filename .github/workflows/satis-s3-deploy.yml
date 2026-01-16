@@ -1,4 +1,4 @@
-zname: Deploy HTML to S3
+name: Deploy HTML to S3
 on: workflow_run
 jobs:
   deploy:
