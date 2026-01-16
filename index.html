@@ -1,166 +1,147 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Saffron & Stone | Restaurant</title>
-  <meta name="description" content="Menu, ordering, and contact for Saffron & Stone." />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Sri Krishna Vilas | Menu</title>
+  <meta name="description"
+    content="Sri Krishna Vilas menu – order via WhatsApp, view specials, tiffins, dosa, curries and more." />
   <link rel="stylesheet" href="./styles.css" />
 </head>
 
 <body>
+
+  <!-- ===================== Header ===================== -->
   <header class="header">
     <div class="container header__inner">
       <div class="brand">
-        <div class="brand__logo">S&S</div>
-        <div class="brand__text">
-          <div class="brand__name">Saffron & Stone</div>
-          <div class="brand__tagline">Fresh. Fast. Flavorful.</div>
+        <div class="brand__logo" aria-label="Sri Krishna Vilas Logo"></div>
+        <div>
+          <div class="brand__name">Sri Krishna Vilas</div>
+          <div class="brand__tagline">Pure Veg • South Indian • North Indian • Chaat</div>
         </div>
       </div>
 
-      <nav class="nav">
+      <nav class="nav" aria-label="Primary">
         <a href="#menu">Menu</a>
-        <a href="#offers">Offers</a>
         <a href="#hours">Hours</a>
         <a href="#contact">Contact</a>
-        <button id="viewCartBtn" class="btn btn--ghost" type="button">
-          Cart <span id="cartCount" class="pill">0</span>
+        <button id="viewCartBtn" class="btn btn--secondary" type="button">
+          View Cart <span class="pill" id="cartCount">0</span>
         </button>
       </nav>
     </div>
   </header>
 
   <main>
+
+    <!-- ===================== Hero ===================== -->
     <section class="hero">
       <div class="container hero__inner">
         <div class="hero__copy">
-          <h1>Order your favorites in seconds.</h1>
+          <h1>Order from Sri Krishna Vilas</h1>
           <p>
-            Explore our curated menu, add items to cart, and send your order via WhatsApp or call us.
-            Perfect for S3 static hosting.
+            Browse the menu, add items to cart, and place your order directly via WhatsApp.
+            For delivery, add your address in notes.
           </p>
+
           <div class="hero__cta">
-            <a class="btn" href="#menu">Browse Menu</a>
-            <button id="quickOrderBtn" class="btn btn--secondary" type="button">Quick Order</button>
+            <button id="quickOrderBtn" class="btn" type="button">Start Order</button>
+            <a id="callLink" class="btn btn--ghost" href="#">Call</a>
+            <a id="mapsLink" class="btn btn--ghost" href="#" target="_blank" rel="noopener">Directions</a>
+            <button id="openHoursBtn" class="btn btn--secondary" type="button">View Hours</button>
           </div>
 
           <div class="hero__badges">
-            <div class="badge">Pickup & Delivery</div>
-            <div class="badge">Veg & Non-Veg</div>
-            <div class="badge">Spice Levels</div>
+            <div class="badge">Top item: <strong id="kpiPopular">Chef Special</strong></div>
+            <div class="badge">Location: <span id="addressText">—</span></div>
+          </div>
+
+          <div class="spacer"></div>
+
+          <div class="notice small">
+            Tip: Use search + filters to find your favorite dosa, curries, chaat, and more.
           </div>
         </div>
 
         <div class="hero__card">
           <div class="hero__cardTop">
             <div>
-              <div class="kpi__value" id="kpiPopular">Butter Chicken</div>
-              <div class="kpi__label">Most ordered today</div>
+              <div class="kpi__value" id="cartSubtitle">0 items</div>
+              <div class="kpi__label">In your cart</div>
             </div>
-            <div class="kpi">
-              <div class="kpi__value" id="kpiEta">25–35</div>
-              <div class="kpi__label">mins avg ETA</div>
+            <div>
+              <div class="kpi__value" id="subtotal">$0.00</div>
+              <div class="kpi__label">Subtotal</div>
             </div>
           </div>
 
-          <div class="hero__cardBottom">
-            <div class="notice">
-              <strong>Tip:</strong> For best results, customize your order notes (less spicy, no onions, etc.).
-            </div>
-            <button id="openHoursBtn" class="btn btn--ghost btn--full" type="button">
-              View Hours & Location
-            </button>
+          <a id="checkoutWhatsAppBtn" class="btn btn--full" href="#" target="_blank" rel="noopener">
+            Checkout on WhatsApp
+          </a>
+
+          <div class="small muted">
+            Add order notes (spice level, no onion/garlic, pickup time, delivery address).
+          </div>
+
+          <textarea id="orderNotes" class="textarea" rows="4" placeholder="Order notes..."></textarea>
+
+          <div class="twoCol">
+            <button id="saveNotesBtn" class="btn btn--secondary" type="button">Save Notes</button>
+            <a id="whatsAppLink" class="btn" href="#" target="_blank" rel="noopener">Open WhatsApp</a>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="menu" class="section">
+    <!-- ===================== Menu ===================== -->
+    <section id="menu" class="section section--muted">
       <div class="container">
         <div class="section__head">
           <h2>Menu</h2>
-          <p>Search, filter, and add items to cart.</p>
+          <p>Search, filter by category, and add items to your cart.</p>
         </div>
 
         <div class="filters">
           <div class="filters__left">
-            <input id="searchInput" class="input" placeholder="Search dishes (e.g., biryani, paneer, dosa)..." />
+            <input id="searchInput" class="input" type="search" placeholder="Search dosa, biryani, chaat..." />
             <select id="categorySelect" class="select">
               <option value="all">All Categories</option>
+            </select>
+            <select id="sortSelect" class="select">
+              <option value="popular">Sort: Popular</option>
+              <option value="price_asc">Sort: Price (Low → High)</option>
+              <option value="price_desc">Sort: Price (High → Low)</option>
             </select>
           </div>
 
           <div class="filters__right">
             <label class="toggle">
-              <input id="vegOnlyToggle" type="checkbox" />
-              <span>Veg only</span>
+              <input id="vegOnlyToggle" type="checkbox" checked />
+              Veg only
             </label>
-
             <label class="toggle">
               <input id="spicyToggle" type="checkbox" />
-              <span>Spicy</span>
+              Spicy only
             </label>
-
-            <select id="sortSelect" class="select">
-              <option value="popular">Sort: Popular</option>
-              <option value="price_asc">Price: Low → High</option>
-              <option value="price_desc">Price: High → Low</option>
-            </select>
           </div>
         </div>
 
-        <div id="menuGrid" class="grid"></div>
+        <div id="menuGrid" class="grid" aria-live="polite"></div>
       </div>
     </section>
 
-    <section id="offers" class="section section--muted">
-      <div class="container">
-        <div class="section__head">
-          <h2>Offers</h2>
-          <p>Simple promotions you can edit in <code>app.js</code>.</p>
-        </div>
-
-        <div class="offers">
-          <div class="offer">
-            <div class="offer__title">Lunch Combo</div>
-            <div class="offer__desc">Any curry + rice + drink</div>
-            <div class="offer__meta">Mon–Fri • 11am–3pm</div>
-          </div>
-          <div class="offer">
-            <div class="offer__title">Family Pack</div>
-            <div class="offer__desc">2 mains + 2 sides + naan</div>
-            <div class="offer__meta">All days • after 5pm</div>
-          </div>
-          <div class="offer">
-            <div class="offer__title">Weekend Special</div>
-            <div class="offer__desc">Chef’s featured biryani</div>
-            <div class="offer__meta">Sat–Sun • limited qty</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
+    <!-- ===================== Hours & Contact ===================== -->
     <section id="hours" class="section">
       <div class="container">
         <div class="section__head">
-          <h2>Hours & Location</h2>
-          <p>Update address and timings in <code>app.js</code>.</p>
+          <h2>Hours</h2>
+          <p>Store timings (update inside <code>app.js</code> in the RESTAURANT object).</p>
         </div>
 
-        <div class="twoCol">
-          <div class="card">
-            <h3>Opening Hours</h3>
-            <ul id="hoursList" class="list"></ul>
-          </div>
-          <div class="card">
-            <h3>Location</h3>
-            <div id="addressText" class="muted"></div>
-            <div class="spacer"></div>
-            <a id="mapsLink" class="btn btn--secondary btn--full" target="_blank" rel="noreferrer">
-              Open in Google Maps
-            </a>
-          </div>
+        <div class="card">
+          <ul id="hoursList" class="list"></ul>
         </div>
       </div>
     </section>
@@ -169,68 +150,92 @@
       <div class="container">
         <div class="section__head">
           <h2>Contact</h2>
-          <p>One-tap WhatsApp order and call.</p>
+          <p>Call or get directions on Google Maps.</p>
         </div>
 
         <div class="twoCol">
           <div class="card">
-            <h3>Order Options</h3>
-            <div class="actions">
-              <a id="whatsAppLink" class="btn btn--full" target="_blank" rel="noreferrer">Order on WhatsApp</a>
-              <a id="callLink" class="btn btn--ghost btn--full">Call Restaurant</a>
+            <div class="item__name">Sri Krishna Vilas</div>
+            <div class="muted" style="margin-top:6px;">
+              <span id="addressText">—</span>
             </div>
-            <p class="muted small">
-              WhatsApp order includes cart items, totals, and order notes.
-            </p>
+            <div class="spacer"></div>
+            <div class="hero__cta">
+              <a id="callLink" class="btn btn--secondary" href="#">Call</a>
+              <a id="mapsLink" class="btn btn--ghost" href="#" target="_blank" rel="noopener">Directions</a>
+            </div>
           </div>
 
           <div class="card">
-            <h3>Notes for Kitchen</h3>
-            <textarea id="orderNotes" class="textarea" rows="5" placeholder="Example: Less spicy, no onions, extra raita..."></textarea>
+            <div class="item__name">Quick Order</div>
+            <p class="muted">Your cart summary will be sent to WhatsApp.</p>
+            <a id="checkoutWhatsAppBtn" class="btn btn--full" href="#" target="_blank" rel="noopener">
+              Checkout on WhatsApp
+            </a>
             <div class="spacer"></div>
-            <button id="saveNotesBtn" class="btn btn--secondary btn--full" type="button">Save Notes</button>
-            <p class="muted small">
-              Notes are stored in your browser only (localStorage).
-            </p>
+            <a id="whatsAppLink" class="btn btn--secondary btn--full" href="#" target="_blank" rel="noopener">
+              Open WhatsApp Message
+            </a>
           </div>
         </div>
       </div>
     </section>
+
   </main>
 
-  <!-- Cart Drawer -->
-  <div id="cartBackdrop" class="backdrop hidden"></div>
-  <aside id="cartDrawer" class="drawer hidden" aria-hidden="true">
+  <!-- ===================== Footer ===================== -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="muted small">© <span id="year"></span> Sri Krishna Vilas. All rights reserved.</div>
+      <div class="muted small">Built for S3 static hosting + GitHub Actions deployment.</div>
+    </div>
+  </footer>
+
+  <!-- ===================== Cart Drawer ===================== -->
+  <div id="cartBackdrop" class="backdrop hidden" aria-hidden="true"></div>
+
+  <aside id="cartDrawer" class="drawer hidden" aria-hidden="true" aria-label="Cart Drawer">
     <div class="drawer__head">
       <div>
         <div class="drawer__title">Your Cart</div>
-        <div class="drawer__subtitle muted" id="cartSubtitle">0 items</div>
+        <div class="drawer__subtitle" id="cartSubtitle">0 items</div>
       </div>
       <button id="closeCartBtn" class="iconBtn" type="button" aria-label="Close cart">✕</button>
     </div>
 
-    <div id="cartItems" class="drawer__body"></div>
+    <div class="drawer__body">
+      <div id="cartItems"></div>
+
+      <div class="card">
+        <div class="totals__row">
+          <span class="muted">Subtotal</span>
+          <strong id="subtotal">$0.00</strong>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="item__name">Order Notes</div>
+        <div class="muted small">Saved notes will be included in WhatsApp checkout.</div>
+        <div class="spacer"></div>
+        <textarea id="orderNotes" class="textarea" rows="4" placeholder="Notes..."></textarea>
+        <div class="spacer"></div>
+        <div class="twoCol">
+          <button id="saveNotesBtn" class="btn btn--secondary" type="button">Save Notes</button>
+          <a id="whatsAppLink" class="btn" href="#" target="_blank" rel="noopener">Open WhatsApp</a>
+        </div>
+      </div>
+    </div>
 
     <div class="drawer__foot">
-      <div class="totals">
-        <div class="totals__row"><span>Subtotal</span><strong id="subtotal">$0.00</strong></div>
-        <div class="totals__row muted small"><span>Taxes/fees</span><span>Calculated at checkout</span></div>
-      </div>
-
-      <div class="actions">
-        <button id="clearCartBtn" class="btn btn--ghost btn--full" type="button">Clear Cart</button>
-        <a id="checkoutWhatsAppBtn" class="btn btn--full" target="_blank" rel="noreferrer">Send Order via WhatsApp</a>
-      </div>
+      <button id="clearCartBtn" class="btn btn--secondary btn--full" type="button">Clear Cart</button>
+      <div class="spacer"></div>
+      <a id="checkoutWhatsAppBtn" class="btn btn--full" href="#" target="_blank" rel="noopener">
+        Checkout on WhatsApp
+      </a>
     </div>
   </aside>
 
-  <footer class="footer">
-    <div class="container footer__inner">
-      <div class="muted small">© <span id="year"></span> Saffron & Stone</div>
-      <div class="muted small">Hosted on Amazon S3</div>
-    </div>
-  </footer>
-
   <script src="./app.js"></script>
 </body>
+
 </html>
