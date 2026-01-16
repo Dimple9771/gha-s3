@@ -1,4 +1,4 @@
-name: Deploy HTML to S3
+zname: Deploy HTML to S3
 on: workflow_run
 jobs:
   deploy:
@@ -14,7 +14,6 @@ jobs:
           aws-region: us-east-2
       - name: code static code to s3
         run: |
-          aws s3 sync . s3://dimple-ex2 --delete/ \
           aws s3 website s3://dimple-ex2 --index-document index.html\ /
           --exclude "*" \
           --include "index.html"
