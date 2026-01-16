@@ -12,3 +12,8 @@ jobs:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY}}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY}}
           aws-region: us-east-2
+      - name: code static code to s3
+        run: |
+          aws s3 syn ./ s3://dimple-ex2/\
+          --exclude "*" \
+          --include "index.html"
