@@ -1,19 +1,19 @@
 // ---------- Configure your restaurant here ----------
 const RESTAURANT = {
-  name: "Saffron & Stone",
-  phoneE164: "+14045551234", // <-- change
-  whatsappE164: "+14045551234", // <-- change (same as phone ok)
-  address: "123 Peachtree St NE, Atlanta, GA 30303",
-  googleMapsQuery: "123 Peachtree St NE, Atlanta, GA 30303",
+  name: "Sri krishna vilas",
+  phoneE164: "+1678 272 4444", // <-- change
+  whatsappE164: "+1678 272 4444", // <-- change (same as phone ok)
+  address: "2255 callaway court cumming georgia 30041",
+  googleMapsQuery: "2255 callaway court cumming georgia 30041",
   currency: "USD",
   hours: [
-    { day: "Mon", time: "11:00 AM – 10:00 PM" },
-    { day: "Tue", time: "11:00 AM – 10:00 PM" },
-    { day: "Wed", time: "11:00 AM – 10:00 PM" },
-    { day: "Thu", time: "11:00 AM – 10:00 PM" },
-    { day: "Fri", time: "11:00 AM – 11:00 PM" },
-    { day: "Sat", time: "12:00 PM – 11:00 PM" },
-    { day: "Sun", time: "12:00 PM – 9:00 PM" },
+    { day: "Mon", time: "10:00 AM – 10:00 PM" },
+    { day: "Tue", time: "10:00 AM – 10:00 PM" },
+    { day: "Wed", time: "10:00 AM – 10:00 PM" },
+    { day: "Thu", time: "10:00 AM – 10:00 PM" },
+    { day: "Fri", time: "08:00 AM – 10:00 PM" },
+    { day: "Sat", time: "08:00 AM – 10:00 PM" },
+    { day: "Sun", time: "08:00 PM – 10:00 PM" },
   ],
 };
 
