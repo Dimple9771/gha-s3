@@ -19,5 +19,5 @@ jobs:
        runs-on: ubuntu-latest
        steps:
         - name: Deploy the App
-          run: echo "Deploying the ${{ inputs.artifact-tag }} application to ${{ inputs.environment }}"
+          run: echo "Deploying the ${{ inputs.artifact_tag }} application to ${{ inputs.environment }}"
         
