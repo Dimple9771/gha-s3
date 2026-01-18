@@ -6,7 +6,7 @@ on:
         description: Choose the environment to deply
         required: true
         default: dev
-   jobs:
+jobs:
      inputs-demo:
        runs-on: ubuntu-latest
        steps:
