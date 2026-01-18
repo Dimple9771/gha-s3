@@ -6,8 +6,8 @@ on:
         description: Choose the environment to deply
         required: true
         default: dev
-  jobs:
-    inputs-demo:
+   jobs:
+     inputs-demo:
        runs-on: ubuntu-latest
        steps:
         - name: Deploy the App
